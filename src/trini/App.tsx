@@ -20,7 +20,7 @@ ReactDOM.render((
         <Auth0Provider
             domain="syncretic.eu.auth0.com"
             clientId="T7k8XmfXePV5zkd8mPOmgB3nv5nyr66I"
-            redirectUri={window.location.origin}>
+            redirectUri={window.location.origin + (window.location.href.includes("github.io") ? "/trini/" : "")}>
                 <AppFrame services={appServices} />
         </Auth0Provider>
     ), 
