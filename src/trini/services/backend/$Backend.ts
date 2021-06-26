@@ -10,7 +10,6 @@ import { User } from "trini/models/User";
 export interface IBackend {
     getTickets(): Promise<Ticket[]>;
     getProjects(): Promise<Project[]>;
-    getUsers(): Promise<User[]>;    
 }
 
 /** Динамически загружает тикеты из базы. */

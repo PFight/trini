@@ -14,19 +14,19 @@ export class FirebaseBacked implements IBackend {
 
     async getTickets(): Promise<Ticket[]> {
         let tickets = await firebase.firestore().collection("tickets").get();
-        let users = await this.getUsers();
         let projects = await this.getProjects();
-        let getUser = (id: string) => {
-            return users.find(user => user.id == id);
-        }
+        let getUser = (data: any) => {
+            return { id: data?.id, name: data.name } as User;
+        };
+
         return tickets.docs.map(x => {
             let data = x.data();
             return { 
                 id: x.id, 
                 name: data.name,
                 description: data.description,
-                author: getUser(data.author?.id) as User,
-                performers: data.performers?.map((user: any) => getUser(user.id)) as User[],
+                author: getUser(data.author),
+                performers: data.performers?.map((user: any) => getUser(user)),
                 project: projects.find(project => project.id == data.project.id) as Project
             };
         });
@@ -38,17 +38,6 @@ export class FirebaseBacked implements IBackend {
             id: x.id, 
             name: x.data().name
         }));    
-       return docs;
-    }
-
-    async  getUsers(): Promise<User[]> {
-        let projects = await firebase.firestore().collection("users").get();
-        let docs = projects.docs.map(x => ({ 
-            id: x.id, 
-            firstName: x.data().firstName,
-            lastName: x.data().lastName,
-            openId: x.data().openId
-        }));
        return docs;
     }
 

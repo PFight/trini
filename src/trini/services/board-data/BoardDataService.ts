@@ -1,13 +1,14 @@
 import { createDomain, forward, Store } from "effector";
 import { Ticket, Project } from "trini/models";
+import { LoadingState } from "trini/models/LoadingState";
 import { $Backend } from "trini/services";
-import { IBoardData, LoadingState } from "./$BoardData";
+import { IBoardDataService } from "./$BoardData";
 
-export class BoardDataService implements IBoardData {
+export class BoardDataService implements IBoardDataService {
     domain = createDomain("BoardDataService");
     $tickets = this.domain.store<Ticket[]>([], { name: "$tickets" });
     $projects = this.domain.store<Project[]>([], { name: "$projects" });
-    $loadingState = this.domain.store<LoadingState>({ complete: false }, { name: "$loaded" });
+    $loadingState = this.domain.store<LoadingState>({ complete: false }, { name: "$loadingState" });
 
     constructor(protected services: $Backend) {
         forward({ from: this.loadProjectsFx.doneData, to: this.$projects });

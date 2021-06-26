@@ -5,9 +5,9 @@ import { IBackend } from "./$Backend";
 
 export class BackedMock implements IBackend {
     users: User[] = [
-        { firstName: "Архип", lastName: "Архипов", openId: "", id: "1" },
-        { firstName: "Прохор", lastName: "Аглы", openId: "", id: "2" },
-        { firstName: "Иполит", lastName: "Рубаков", openId: "", id: "3" }
+        { name: "Архип", id: "1" },
+        { name: "Прохор", id: "2" },
+        { name: "Иполит", id: "3" }
     ];
     projects: Project[] = [
         { id: "p2", name: "Построить космолет" },
@@ -30,8 +30,4 @@ export class BackedMock implements IBackend {
     async  getProjects(): Promise<Project[]> {
         return this.projects;
     }
-    async  getUsers(): Promise<User[]> {
-        return this.users;
-    }
-
 }
