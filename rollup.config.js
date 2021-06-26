@@ -37,7 +37,7 @@ var config = {
 	],
 	output: {
 		name: 'app',
-		file: './dist/app.js',
+		file: './docs/app.js',
 		format: 'iife',
 		interop: true,
 		sourcemap: true
