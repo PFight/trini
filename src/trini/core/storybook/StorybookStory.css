@@ -1,0 +1,11 @@
+.storybook__wrapper {
+    background: white;
+    border: 10px solid white;
+}
+
+.storybook__page {
+    height: calc(100vh - 60px);
+    width: calc(100vw - 60px);
+    padding: 10px;
+    background: rgb(234 234 234);
+}

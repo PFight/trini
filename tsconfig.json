@@ -25,7 +25,7 @@
     "baseUrl": "./src",
     "outDir": "./build",
     "paths": {
-      "trini/*": [".src/trini/*" ]
+      "trini/*": ["./trini/*" ]
     }
   },
   "include": [

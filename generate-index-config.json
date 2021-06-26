@@ -1,0 +1,6 @@
+{
+    "delete": true,
+    "location": "replace",
+    "directory": "src",
+    "exclude": "(.*\\.(test|stories)\\.(ts|tsx)$)"
+}
