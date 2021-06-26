@@ -9,7 +9,7 @@ export class BoardDataService implements IBoardData {
     $projects = this.domain.store<Project[]>([], { name: "$projects" });
     $loadingState = this.domain.store<LoadingState>({ complete: false }, { name: "$loaded" });
 
-    constructor(private services: $Backend) {
+    constructor(protected services: $Backend) {
         forward({ from: this.loadProjectsFx.doneData, to: this.$projects });
         forward({ from: this.loadTicketsFx.doneData, to: this.$tickets });
     }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Board } from "./board";
+import { Board } from "./app/board";
 import { $AppServices } from "./services";
 import "./AppFrame.css";
 
